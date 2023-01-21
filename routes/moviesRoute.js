@@ -1,9 +1,9 @@
 const express = require('express');
 const Movie = require('../models/moviesSchema');
 const Router = express.Router();
-const cloudinary = require('cloudinary').v2;
+// const cloudinary = require('cloudinary').v2;
 // const multer = require('multer');
-const { findOneAndUpdate } = require('../models/moviesSchema');
+// const { findOneAndUpdate } = require('../models/moviesSchema');
 // cloudinary.config({
     // cloud_name: 'dwhra8mlv',
     // api_key: '848551776249758',
