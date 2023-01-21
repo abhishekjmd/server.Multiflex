@@ -1,8 +1,8 @@
 require('./config/db')
 const express = require('express')
-const serverless = require('serverless-http')
+// const serverless = require('serverless-http')
 const app = express()
-const port = process.env.PORT || 5000
+// const port = process.env.PORT || 5000
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const movieRoute = require('./routes/moviesRoute')
@@ -28,6 +28,6 @@ app.get('/data', (req, res) => {
     };
     res.json(data);
 });
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 module.exports = app
 // module.exports.handler = serverless(app);
