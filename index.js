@@ -10,8 +10,8 @@ const artistRoute = require('./routes/artistRoute')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/multiflex', movieRoute);
-app.use('/multilfex/playlist', topPlaylistRoute);
-app.use('/multiflex/artist', artistRoute)
+app.use('/playlist', topPlaylistRoute);
+app.use('/artist', artistRoute)
 app.use(express.json());
 app.use(cors());
 app.get('/', (req, res) => res.send('Hello World!'))
