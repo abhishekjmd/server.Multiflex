@@ -40,8 +40,9 @@ exports.pullMoviesFromLibraryPlaylist = async (req, res) => {
     }
 }
 
-exports.deleteLiraryPlaylist = async (req, res) => {
+exports.deleteLibraryPlaylist = async (req, res) => {
     try {
+        const id = req.params.id
         const deleteLibrary = await libraryPlaylist.findByIdAndDelete(id)
         res.send(deleteLibrary);
         console.log(deleteLibrary);
