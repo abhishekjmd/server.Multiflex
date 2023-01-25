@@ -1,9 +1,11 @@
 const express = require('express')
-const { createLibraryPlaylist, pushMoviesToLibraryPlaylist, getLibrary } = require('../controllers/LibraryPlaylistControllers')
 const Router = express.Router()
+const { createLibraryPlaylist, pushMoviesToLibraryPlaylist, getLibrary, deleteLiraryPlaylist } = require('../controllers/LibraryPlaylistControllers')
 
 Router.post('/addLibrary', createLibraryPlaylist);
-Router.put('/updateLibrary', pushMoviesToLibraryPlaylist);
-Router.get('/getLibrary', getLibrary)
+Router.put('/updateLibrary/:id', pushMoviesToLibraryPlaylist);
+Router.put('updateLibrary/:id/movies/:id', pushMoviesToLibraryPlaylist);
+Router.delete('deleteLibrary', deleteLiraryPlaylist);
+Router.get('/getLibrary', getLibrary);
 
 module.exports = Router

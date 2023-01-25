@@ -28,6 +28,30 @@ exports.pushMoviesToLibraryPlaylist = async (req, res) => {
     }
 }
 
+exports.pullMoviesFromLibraryPlaylist = async (req, res) => {
+    try {
+        const pullMovies = await libraryPlaylist.findOneAndUpdate({ _id: req.params.id }, { $pull: { movies: { _id: req.params.id } } }, { new: true }).populate('movies')
+        res.send(pullMovies);
+        console.log(pullMovies)
+        return;
+    } catch (error) {
+        res.send(error);
+        console.log(error)
+    }
+}
+
+exports.deleteLiraryPlaylist = async (req, res) => {
+    try {
+        const deleteLibrary = await libraryPlaylist.findByIdAndDelete(id)
+        res.send(deleteLibrary);
+        console.log(deleteLibrary);
+        return;
+    } catch (error) {
+        res.send(error);
+        console.log(error);
+    }
+}
+
 exports.getLibrary = async (req, res) => {
     try {
         const getLibraryPlaylist = await libraryPlaylist.find({});
