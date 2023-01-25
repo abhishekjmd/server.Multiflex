@@ -54,7 +54,7 @@ exports.deleteLiraryPlaylist = async (req, res) => {
 
 exports.getLibrary = async (req, res) => {
     try {
-        const getLibraryPlaylist = await libraryPlaylist.find({});
+        const getLibraryPlaylist = await libraryPlaylist.find().populate('movies').exec();
         res.send(getLibraryPlaylist);
         console.log(getLibraryPlaylist);
         return;
