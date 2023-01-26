@@ -1,16 +1,15 @@
 const express = require('express');
 const Movie = require('../models/moviesSchema');
 const Router = express.Router();
-// const cloudinary = require('cloudinary').v2;
-// const multer = require('multer');
-// const { findOneAndUpdate } = require('../models/moviesSchema');
-// cloudinary.config({
-    // cloud_name: 'dwhra8mlv',
-    // api_key: '848551776249758',
-    // api_secret: 'K6KPHwaeYjHH5H0drQutBQJYv6E',
-// });
+const cloudinary = require('cloudinary').v2;
+const multer = require('multer');
+cloudinary.config({
+    cloud_name: 'dwhra8mlv',
+    api_key: '848551776249758',
+    api_secret: 'K6KPHwaeYjHH5H0drQutBQJYv6E',
+});
 
-// const upload = multer({ dest: 'upload/' });
+const upload = multer({ dest: 'upload/' });
 
 
 
@@ -20,7 +19,6 @@ Router.post('/api/add_movies', async (req, res) => {
     try {
         const addMovies = new Movie({
             name: req.body.name,
-            index: req.body.index,
             Preview_url: req.body.Preview_url,
             image: req.body.image,
             singer: req.body.singer
@@ -36,17 +34,6 @@ Router.post('/api/add_movies', async (req, res) => {
     }
 })
 
-
-Router.put('/api/update_movies/:id', async (req, res) => {
-    try {
-        const doc = await Movie.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true });
-        console.log(doc);
-        res.send(doc);
-        return;
-    } catch (error) {
-        console.log(error)
-    }
-})
 
 
 
@@ -85,8 +72,6 @@ async (req, res) => {
 // --------------- TRENDING MOVIE POST ROUTE --------
 
 
-
-
 // ----------------- GET API ENDPOINTS ------------------------
 Router.get('/api/movies', async (req, res) => {
     try {
@@ -100,7 +85,6 @@ Router.get('/api/movies', async (req, res) => {
         console.log(error)
     }
 })
-
 
 
 // ----------------- GET PARTICULAR API ENDPOINTS ------------------------
@@ -125,7 +109,7 @@ Router.delete('/api/movies/:id', async (req, res) => {
     try {
         const id = req.params.id
         const deleteMovie = await Movie.findByIdAndDelete(id)
-        console.log(deleteMovie);
+       console.log(deleteMovie);
         res.send(deleteMovie);
     } catch (error) {
         // res.send(error)

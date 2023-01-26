@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+// Gc1zL9KTXkWGap2Q
+// const dbUrl = process.env.DB_URL
 mongoose.connect("mongodb+srv://multiflex:Gc1zL9KTXkWGap2Q@cluster0.czomqvt.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
