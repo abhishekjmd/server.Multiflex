@@ -16,10 +16,10 @@ exports.createLibraryPlaylist = async (req, res) => {
     }
 }
 
+// const pushMovies = await libraryPlaylist.findByIdAndUpdate(req.params.id, { $push: { movies: req.body.movieId } }, { new: true }).populate('movies')
 exports.pushMoviesToLibraryPlaylist = async (req, res) => {
     try {
-        // const pushMovies = await libraryPlaylist.findOneAndUpdate({ _id: req.params.id }, { $push: req.body }, { new: true }).populate('movies')
-        const pushMovies = await libraryPlaylist.findByIdAndUpdate(req.params.id, { $push: { movies: req.body.movieId } }, { new: true }).populate('movies')
+        const pushMovies = await libraryPlaylist.findOneAndUpdate({ _id: req.params.id }, { $push: { movies: req.body.movieId } }, { new: true }).populate('movies')
         res.send(pushMovies);
         console.log(pushMovies);
         return;
