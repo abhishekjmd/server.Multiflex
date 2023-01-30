@@ -4,7 +4,7 @@ const { registerUser, sendOtp, verifyOtp, allUsers, deleteUser } = require('../c
 const { check, validationResult } = require('express-validator')
 
 Router.post('/register', [[check('email', 'Please include a valid email').isEmail(), check('password', 'Password is required').exists()]], registerUser);
-Router.post('/signin', sendOtp);
+Router.post('/login', sendOtp);
 Router.post('/verify-otp', verifyOtp);
 Router.get('/allUsers', allUsers);
 Router.delete('/deleteUser/:id', deleteUser)
