@@ -1,6 +1,6 @@
 const User = require('../models/userSchema')
-const { check, validationResult } = require('express-validator')
 const twilio = require('twilio')
+const { check, validationResult } = require('express-validator')
 
 const accountSid = 'AC6e0a9243f6cbf3508a7e564144dc7c63';
 const authToken = '3263ed4635132d524ec29849ae66d1d0';
