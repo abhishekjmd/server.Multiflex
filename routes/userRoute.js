@@ -4,8 +4,8 @@ const Router = express.Router();
 
 Router.post('/register', registerUser);
 Router.post('/signin', sendOtp);
-Router.post('verify-otp', verifyOtp);
-Router.get('allUsers', allUsers);
+Router.post('/verify-otp', verifyOtp);
+Router.get('/allUsers', allUsers);
 Router.delete('/deleteUser/:id', deleteUser)
 
 module.exports = Router
