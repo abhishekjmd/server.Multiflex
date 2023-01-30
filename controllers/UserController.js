@@ -12,46 +12,43 @@ const generateOtp = () => {
     return Math.floor(100000 + Math.random() * 900000)
 }
 
-
-exports.registerUser =
-    [check('email', 'Please include a valid email').isEmail(), check('password', 'Password is required').exists()]
-    ,
-    async (req, res) => {
-        try {
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return res.status(400).json({ errors: errors.array() });
-            }
-
-            const { name, email, password, confirmPassword, phone } = req.body
-
-            if (password != confirmPassword) {
-                res.json({ message: 'password do not match' })
-            }
-
-            const user = await User.findOne({ email, phone });
-            if (user) {
-                return res.status(400).json({ msg: 'User already exists' })
-            }
-
-            else {
-                const newUser = new User({
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: req.body.password,
-                    confirmPassword: req.body.confirmPassword,
-                    phone: req.body.phone
-                })
-                await newUser.save()
-                console.log(newUser);
-                res.send(newUser);
-                return;
-            }
-        } catch (error) {
-            console.log(error)
-            res.send(error);
+// [check('email', 'Please include a valid email').isEmail(), check('password', 'Password is required').exists()]    ,
+exports.registerUser = async (req, res) => {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
         }
+
+        const { name, email, password, confirmPassword, phone } = req.body
+
+        if (password != confirmPassword) {
+            res.json({ message: 'password do not match' })
+        }
+
+        const user = await User.findOne({ email, phone });
+        if (user) {
+            return res.status(400).json({ msg: 'User already exists' })
+        }
+
+        else {
+            const newUser = new User({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+                confirmPassword: req.body.confirmPassword,
+                phone: req.body.phone
+            })
+            await newUser.save()
+            console.log(newUser);
+            res.send(newUser);
+            return;
+        }
+    } catch (error) {
+        console.log(error)
+        res.send(error);
     }
+}
 
 
 

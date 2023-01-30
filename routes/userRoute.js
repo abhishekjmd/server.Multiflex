@@ -2,7 +2,7 @@ const express = require('express');
 const Router = express.Router();
 const { registerUser, sendOtp, verifyOtp, allUsers, deleteUser } = require('../controllers/UserController');
 
-Router.post('/register', registerUser);
+Router.post('/register', [[check('email', 'Please include a valid email').isEmail(), check('password', 'Password is required').exists()]], registerUser);
 Router.post('/signin', sendOtp);
 Router.post('/verify-otp', verifyOtp);
 Router.get('/allUsers', allUsers);
