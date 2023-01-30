@@ -1,5 +1,3 @@
-// const express = require('express');
-// const Router = express.Router();
 const User = require('../models/userSchema')
 const { check, validationResult } = require('express-validator')
 const twilio = require('twilio')
