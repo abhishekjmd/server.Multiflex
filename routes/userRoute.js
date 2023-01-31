@@ -93,7 +93,7 @@ Router.post('/signin', async (req, res) => {
         return;
     } catch (error) {
         console.log(error);
-        res.status(500).send('OTP not send');
+        // res.status(500).send('OTP not send');
     }
 })
 
