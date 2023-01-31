@@ -75,20 +75,20 @@ Router.post('/signin', async (req, res) => {
         await registeredUser.save();
 
         // Send the OTP via SMS
-        const message = await client.messages.create({
-            from: '+16084969810',
-            to: phone,
-            body: `Welcome to the MultiFlex app! please enter the OTP code  ${verificationCode}. Thank you for using MultiFlex!`,
-        });
-        console.log(message);
+        // const message = await client.messages.create({
+            // from: '+16084969810',
+            // to: phone,
+            // body: `Welcome to the MultiFlex app! please enter the OTP code  ${verificationCode}. Thank you for using MultiFlex!`,
+        // });
+        // console.log(message);
 
-        // client.messages.create({
-        // to: phone,
-        // from: twilioPhoneNumber,
-        // body: `Welcome to the MultiFlex app! please enter the OTP code  ${verificationCode}. Thank you for using MultiFlex!`
-        // })
-        // .then(message => console.log(message.sid))
-        // .catch(err => console.log(err));
+        client.messages.create({
+        to: phone,
+        from: twilioPhoneNumber,
+        body: `Welcome to the MultiFlex app! please enter the OTP code  ${verificationCode}. Thank you for using MultiFlex!`
+        })
+        .then(message => console.log(message.sid))
+        .catch(err => console.log(err));
         // res.json({ msg: 'OTP sent' });
         return;
     } catch (error) {
