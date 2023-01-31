@@ -81,16 +81,16 @@ Router.post('/signin', async (req, res) => {
             body: `Welcome to the MultiFlex app! please enter the OTP code  ${verificationCode}. Thank you for using MultiFlex!`,
         });
         console.log(message);
-       
-        // client.messages.create({
-            // to: phone,
-            // from: twilioPhoneNumber,
-            // body: `Welcome to the MultiFlex app! please enter the OTP code  ${verificationCode}. Thank you for using MultiFlex!`
-        // })
-            // .then(message => console.log(message.sid))
-            // .catch(err => console.log(err));
-        // res.json({ msg: 'OTP sent' });
 
+        // client.messages.create({
+        // to: phone,
+        // from: twilioPhoneNumber,
+        // body: `Welcome to the MultiFlex app! please enter the OTP code  ${verificationCode}. Thank you for using MultiFlex!`
+        // })
+        // .then(message => console.log(message.sid))
+        // .catch(err => console.log(err));
+        // res.json({ msg: 'OTP sent' });
+        return;
     } catch (error) {
         console.log(error);
         res.status(500).send('OTP not send');
